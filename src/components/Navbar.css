@@ -1,0 +1,34 @@
+nav {
+    background-color: rgb(236, 236, 236);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+nav > a {
+    text-decoration: none;
+}
+
+nav a h1 {
+    font-size: 1.2rem;
+    margin: .5rem 1rem;
+    color: black;
+}
+
+.section-list {
+    display: flex;
+    gap: 2rem;
+    margin-right: 2rem;
+    list-style: none;
+}
+
+.section-list a {
+    text-decoration: none;
+    color: rgb(65, 65, 65);
+}
+
+.section-list a:hover {
+    color: black;
+    text-decoration: underline;
+}
