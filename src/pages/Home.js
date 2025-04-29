@@ -1,15 +1,22 @@
 import { heroContent } from "../constants/constants"
+import './Home.css'
 
 export const Home = (element) => {
 
     const heroContainer = document.createElement('div')
+    heroContainer.classList.add('hero-container')
     const heroLeft = document.createElement('div')
+    heroLeft.classList.add('hero-left')
     const heroRight = document.createElement('div')
+    heroRight.classList.add('hero-right')
 
+    const divImgHero = document.createElement('div')
+    divImgHero.classList.add('hero-img')
     const imgHero = document.createElement('img')
-    imgHero.setAttribute('src', 'https://i.pinimg.com/474x/da/f5/bc/daf5bc10c639301647c89dd84bfcc8a2.jpg')
+    imgHero.setAttribute('src', 'https://content.elmueble.com/medio/2021/07/13/00507324-o_47aaff7c_1657x2000.jpg')
+    divImgHero.append(imgHero)
 
-    heroLeft.append(imgHero)
+    heroLeft.append(divImgHero)
 
     const h2Title = document.createElement('h2')
     h2Title.textContent = heroContent.title
