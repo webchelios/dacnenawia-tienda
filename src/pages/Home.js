@@ -19,10 +19,13 @@ export const Home = (element) => {
     heroLeft.append(divImgHero)
 
     const h2Title = document.createElement('h2')
+    h2Title.classList.add('hero-title')
     h2Title.textContent = heroContent.title
     const pSubtitle = document.createElement('p')
+    pSubtitle.classList.add('hero-subtitle')
     pSubtitle.textContent = heroContent.subtitle
     const callToAction = document.createElement('button')
+    callToAction.classList.add('hero-button')
     callToAction.innerText = heroContent.button
 
     heroRight.append(h2Title,pSubtitle,callToAction)

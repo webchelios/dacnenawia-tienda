@@ -2,7 +2,8 @@ export const sections = [
     'Inicio',
     'Tienda',
     'Acerca de',
-    'Contacto'
+    'Contacto',
+    'Carrito'
 ]
 
 export const heroContent = {

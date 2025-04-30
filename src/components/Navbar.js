@@ -8,7 +8,7 @@ export const Navbar = ( element ) => {
     const navbarLogo = document.createElement('a')
     navbarLogo.setAttribute('href', `#`)
     const navbarLogoTitle = document.createElement('h1')
-    navbarLogoTitle.textContent = "Dacnenawia"
+    navbarLogoTitle.textContent = "DACNENAWIA"
     navbarLogo.append(navbarLogoTitle)
 
     const navbarUl = document.createElement('ul')
