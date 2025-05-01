@@ -18,6 +18,8 @@ export class Product {
 		this.description = description;
 		this.images = images;
 		this.stock = stock;
+
+		this.observers = [];
 	}
 
 	get getId() {
@@ -56,11 +58,24 @@ export class Product {
 		return this.ammount;
 	}
 
+	addObserver(callback) {
+		this.observers.push(callback);
+	}
+
+	notifyObservers() {
+		for (const callback of this.observers) {
+			callback();
+		}
+	}
+
 	addUnit() {
 		this.ammount++;
+		this.notifyObservers();
 	}
 
 	substractUnit() {
+		if (this.ammount === 0) return;
 		this.ammount--;
+		this.notifyObservers();
 	}
 }

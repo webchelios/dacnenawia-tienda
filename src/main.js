@@ -14,6 +14,6 @@ document.querySelector('#app').innerHTML = `
 `;
 
 Navbar(document.querySelector('#navbar'));
-Cart(document.querySelector('#cart'));
+
 Home(document.querySelector('#home'));
 Store(document.querySelector('#store'));

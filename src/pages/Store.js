@@ -1,4 +1,5 @@
 import { productInstances } from '../mappers/product-mapper';
+import { Cart } from './Cart';
 import './Store.css';
 
 export const Store = (element) => {
@@ -17,6 +18,7 @@ export const Store = (element) => {
 
 	const productsContainer = document.createElement('div');
 	productsContainer.classList.add('store-products');
+
 	for (const product of productInstances) {
 		const container = document.createElement('div');
 		container.classList.add('store-product-card');
@@ -46,6 +48,7 @@ export const Store = (element) => {
 		addButton.textContent = 'Añadir al carrito';
 		addButton.addEventListener('click', () => {
 			product.addUnit();
+			Cart(document.querySelector('#cart'));
 		});
 
 		storeProductsActions.append(addButton, substractButton);
