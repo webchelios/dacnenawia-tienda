@@ -1,0 +1,37 @@
+.notification {
+	position: fixed;
+	top: 1rem; /* Lo posiciona a la mitad de la altura */
+	left: 50%; /* Lo posiciona a la mitad del ancho */
+	transform: translateX(-50%);
+	padding: 15px;
+	border-radius: 5px;
+	background: #333;
+	color: white;
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	transition: opacity 0.3s ease;
+	z-index: 1000;
+}
+
+.notification-success {
+	background: #4caf50;
+}
+.notification-error {
+	background: #f44336;
+}
+.notification-info {
+	background: #2196f3;
+}
+
+.close-button {
+	background: transparent;
+	border: none;
+	color: white;
+	cursor: pointer;
+	font-size: 1.2em;
+}
+
+.fade-out {
+	opacity: 0;
+}
