@@ -1,6 +1,5 @@
 import { productInstances } from '../mappers/product-mapper';
 import { Cart } from './Cart';
-import { Notification } from '../classes/Notification';
 import './Store.css';
 
 export const Store = (element) => {
@@ -50,11 +49,6 @@ export const Store = (element) => {
 		addButton.addEventListener('click', () => {
 			product.addUnit();
 			Cart(document.querySelector('#cart'));
-			const notif = new Notification(
-				`${product.getName} agregado al carrito!`,
-				'success',
-			);
-			notif.show();
 		});
 
 		storeProductsActions.append(addButton, substractButton);
