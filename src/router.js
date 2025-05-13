@@ -1,6 +1,7 @@
 import { renderPage } from './App';
 import { Home } from './pages/Home';
 import { Store } from './pages/Store';
+import { Cart } from './pages/Cart';
 import { NoPage } from './pages/NoPage';
 
 export const router = (route) => {
@@ -8,8 +9,11 @@ export const router = (route) => {
 		case '/':
 			renderPage(Home());
 			break;
-		case '/store':
+		case '/tienda':
 			renderPage(Store());
+			break;
+		case '/carrito':
+			renderPage(Cart());
 			break;
 		default:
 			renderPage(NoPage());
@@ -17,18 +21,21 @@ export const router = (route) => {
 	}
 };
 
-// export const paths = ['/', '/store', '/about'];
 export const paths = [
 	{
 		route: '/',
 		name: 'Inicio',
 	},
 	{
-		route: '/store',
+		route: '/tienda',
 		name: 'Tienda',
 	},
 	{
-		route: '/about',
+		route: '/nosotros',
 		name: 'Nosotros',
 	},
+	{
+		route: '/carrito',
+		name: 'Carrito'
+	}
 ];

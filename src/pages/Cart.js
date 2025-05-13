@@ -1,17 +1,22 @@
 import { productInstances } from '../mappers/product-mapper';
 
-export const Cart = (element) => {
+export const Cart = () => {
 	const renderCart = () => {
 		const productsInCart = productInstances.filter((p) => p.getAmmount > 0);
-
-		element.innerHTML = '';
-
-		if (productsInCart.length === 0) return;
 
 		const cartContainer = document.createElement('div');
 		cartContainer.classList.add('cart-container');
 		const h2Cart = document.createElement('h2');
 		h2Cart.textContent = 'Carrito de compras';
+
+		if (productsInCart.length === 0) {
+			const emptyParagraph = document.createElement('p')
+			emptyParagraph.textContent = 'El carrito está vacío.'
+			
+			cartContainer.append(h2Cart, emptyParagraph)
+			return cartContainer
+		};
+
 
 		for (const product of productsInCart) {
 			const productCard = document.createElement('div');
@@ -36,7 +41,8 @@ export const Cart = (element) => {
 			const substractButton = document.createElement('button');
 			substractButton.classList.add('substract-button');
 			substractButton.textContent = 'Quitar';
-			substractButton.addEventListener('click', () => {
+			substractButton.addEventListener('click', (e) => {
+				e.preventDefault()
 				product.substractUnit();
 			});
 
@@ -48,7 +54,7 @@ export const Cart = (element) => {
 				productAmmount,
 				cartProductActions,
 			);
-			cartContainer.append(productCard);
+			cartContainer.append(h2Cart, productCard);
 		}
 
 		return cartContainer;
@@ -57,5 +63,7 @@ export const Cart = (element) => {
 	for (const product of productInstances) {
 		product.addObserver(renderCart);
 	}
-	renderCart();
+
+	const render = renderCart();
+	return render
 };
