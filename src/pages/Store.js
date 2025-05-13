@@ -2,7 +2,7 @@ import { productInstances } from '../mappers/product-mapper';
 import { Cart } from './Cart';
 import './Store.css';
 
-export const Store = (element) => {
+export const Store = () => {
 	const storeContainer = document.createElement('div');
 	storeContainer.classList.add('store-container');
 
@@ -57,5 +57,5 @@ export const Store = (element) => {
 	}
 
 	storeContainer.append(titlesContainer, productsContainer);
-	element.append(storeContainer);
+	return storeContainer;
 };

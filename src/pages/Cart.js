@@ -51,7 +51,7 @@ export const Cart = (element) => {
 			cartContainer.append(productCard);
 		}
 
-		element.append(cartContainer);
+		return cartContainer;
 	};
 
 	for (const product of productInstances) {

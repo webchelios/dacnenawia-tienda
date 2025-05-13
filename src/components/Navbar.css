@@ -1,35 +1,39 @@
-nav {
-    background-color: rgb(236, 236, 236);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
+.navbar {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 1rem 2rem;
+	background-color: #333;
+	color: white;
 }
 
-nav > a {
-    text-decoration: none;
+.navbar-brand {
+	text-decoration: none;
+	color: white;
+	font-size: 1.5rem;
+	font-weight: bold;
 }
 
-nav a h1 {
-    font-size: 1.2rem;
-    margin: .5rem 1rem;
-    color: black;
-    letter-spacing: .3rem;
+.nav-list {
+	display: flex;
+	gap: 1.5rem;
+	list-style: none;
+	margin: 0;
+	padding: 0;
 }
 
-.section-list {
-    display: flex;
-    gap: 2rem;
-    margin-right: 2rem;
-    list-style: none;
+.nav-link {
+	color: white;
+	text-decoration: none;
+	padding: 0.5rem 1rem;
+	border-radius: 4px;
+	transition: background-color 0.3s;
 }
 
-.section-list a {
-    text-decoration: none;
-    color: rgb(65, 65, 65);
+.nav-link:hover {
+	background-color: #dbdbdb;
 }
 
-.section-list a:hover {
-    color: black;
-    text-decoration: underline;
+.nav-link.active {
+	background-color: #007bff;
 }
