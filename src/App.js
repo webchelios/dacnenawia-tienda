@@ -27,7 +27,6 @@ export const renderPage = (pageName) => {
 		mainContent.classList.add('main-content');
 		document.querySelector('#app').prepend(mainContent);
 	}
-
 	mainContent.innerHTML = '';
 	mainContent.append(pageName);
 };
