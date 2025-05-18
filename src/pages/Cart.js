@@ -10,13 +10,12 @@ export const Cart = () => {
 		h2Cart.textContent = 'Carrito de compras';
 
 		if (productsInCart.length === 0) {
-			const emptyParagraph = document.createElement('p')
-			emptyParagraph.textContent = 'El carrito está vacío.'
-			
-			cartContainer.append(h2Cart, emptyParagraph)
-			return cartContainer
-		};
+			const emptyParagraph = document.createElement('p');
+			emptyParagraph.textContent = 'El carrito está vacío.';
 
+			cartContainer.append(h2Cart, emptyParagraph);
+			return cartContainer;
+		}
 
 		for (const product of productsInCart) {
 			const productCard = document.createElement('div');
@@ -42,7 +41,7 @@ export const Cart = () => {
 			substractButton.classList.add('substract-button');
 			substractButton.textContent = 'Quitar';
 			substractButton.addEventListener('click', (e) => {
-				e.preventDefault()
+				e.preventDefault();
 				product.substractUnit();
 			});
 
@@ -64,6 +63,5 @@ export const Cart = () => {
 		product.addObserver(renderCart);
 	}
 
-	const render = renderCart();
-	return render
+	return renderCart();
 };
