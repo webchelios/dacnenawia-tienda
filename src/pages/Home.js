@@ -1,5 +1,6 @@
 import { heroContent } from '../constants/constants';
 import { router } from '../router';
+// import { router } from '../router';
 import './Home.css';
 
 export const Home = () => {
@@ -27,11 +28,12 @@ export const Home = () => {
 	const pSubtitle = document.createElement('p');
 	pSubtitle.classList.add('hero-subtitle');
 	pSubtitle.textContent = heroContent.subtitle;
-	const callToAction = document.createElement('button');
+	const callToAction = document.createElement('a');
 	callToAction.classList.add('hero-button');
 	callToAction.innerText = heroContent.button;
+	callToAction.href = '/store';
 	callToAction.addEventListener('click', (e) => {
-		e.preventDefault();
+	 	e.preventDefault();
 		router('/store');
 	});
 

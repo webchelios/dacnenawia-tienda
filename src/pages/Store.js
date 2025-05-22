@@ -1,3 +1,4 @@
+import { Notification } from '../components/Notification';
 import { productInstances } from '../mappers/product-mapper';
 import { Cart } from './Cart';
 import './Store.css';
@@ -48,6 +49,7 @@ export const Store = () => {
 		addButton.textContent = 'Añadir al carrito';
 		addButton.addEventListener('click', () => {
 			product.addUnit();
+			Notification('success', `¡${ product.name} agregado al carrito con éxito!`)
 			Cart(document.querySelector('#cart'));
 		});
 

@@ -7,6 +7,10 @@ export const renderSite = (page, element = document.querySelector('#app')) => {
 
 	element.append(Navbar());
 
+	const notification = document.createElement('div')
+	notification.id = 'notification'
+	element.append(notification)
+
 	const mainContent = document.createElement('div');
 	mainContent.classList.add('main-content');
 	mainContent.append(page);

@@ -1,0 +1,13 @@
+.notification-container {
+    position: fixed;
+    left: calc(50% - 15rem);
+    height: 2rem;
+    width: 30rem;
+    z-index: 1000;
+}
+
+.success-message {
+    background-color: rgb(198, 255, 191);
+        padding: 1rem;
+    border-radius: 1rem;
+}
