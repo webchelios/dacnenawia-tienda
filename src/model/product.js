@@ -62,6 +62,10 @@ export class Product {
 		this.observers.push(callback);
 	}
 
+	removeObserver(callback) {
+		this.observers = this.observers.filter(clbk => clbk !== callback);
+	}
+
 	notifyObservers() {
 		for (const callback of this.observers) {
 			callback();

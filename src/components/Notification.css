@@ -2,12 +2,22 @@
     position: fixed;
     left: calc(50% - 15rem);
     height: 2rem;
-    width: 30rem;
+    max-width: 30rem;
     z-index: 1000;
+    text-align: center;
+      
 }
 
 .success-message {
     background-color: rgb(198, 255, 191);
-        padding: 1rem;
+    padding: 1rem;
     border-radius: 1rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2), 
+                0 2px 4px -1px rgba(0, 0, 0, 0.12);
+}
+
+@media screen and (max-width: 400px) {
+    .notification-container {
+            left: inherit;
+    }
 }

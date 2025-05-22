@@ -1,20 +1,53 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Arvo:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+
 * {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
 }
 
-h1 {
-	font-family: "Arvo", serif;
+html {
+    overflow-y: scroll; 
 }
 
+body {
+    overflow-x: hidden; 
+}
+
+#app {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+}
+
+h1,
 h2,
 h3,
 h4,
 p,
 a,
+footer,
 button {
 	font-family: "Noto Sans", sans-serif;
+}
+
+.primary-button {
+	border: none;
+	font-size: 1.1rem;
+	font-weight: 600;
+	padding: 0.8rem 2rem;
+	border-radius: 0.5rem;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5rem;
+	text-decoration: none;
+	border: 1px solid rgb(189, 189, 189);
+	color: black;
+}
+
+.primary-button:hover {
+	border-color: #191b1f;
 }

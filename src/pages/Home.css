@@ -5,6 +5,7 @@
 	max-width: 1200px;
 	margin: 1rem auto;
 	gap: 3rem;
+	margin-top: 6rem;
 }
 
 .hero-img {
@@ -50,42 +51,6 @@
 	display: flex;
 	gap: 1rem;
 	flex-wrap: wrap;
-}
-
-.hero-button {
-	border: none;
-	font-size: 1.1rem;
-	font-weight: 600;
-	padding: 0.8rem 2rem;
-	border-radius: 0.5rem;
-	cursor: pointer;
-	transition: all 0.3s ease;
-	display: inline-flex;
-	align-items: center;
-	gap: 0.5rem;
-	text-decoration: none;
-	border: 1px solid gray;
-}
-
-.hero-button.primary {
-	background: linear-gradient(135deg, #4f46e5, #7c3aed);
-	color: white;
-	box-shadow: 0 4px 6px rgba(79, 70, 229, 0.2);
-}
-
-.hero-button.secondary {
-	background: white;
-	color: #4f46e5;
-	border: 1px solid #e2e8f0;
-}
-
-.hero-button:hover {
-	transform: translateY(-2px);
-	box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-}
-
-.hero-button.primary:hover {
-	box-shadow: 0 10px 15px -3px rgba(79, 70, 229, 0.3);
 }
 
 /* Responsive Design */

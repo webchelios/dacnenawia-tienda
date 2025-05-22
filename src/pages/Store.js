@@ -9,7 +9,7 @@ export const Store = () => {
 
 	const titlesContainer = document.createElement('div');
 	titlesContainer.classList.add('store-titles');
-	const h2Store = document.createElement('h2');
+	const h2Store = document.createElement('h1');
 	h2Store.classList.add('store-h2');
 	h2Store.textContent = 'Catálogo completo';
 	const pStore = document.createElement('p');

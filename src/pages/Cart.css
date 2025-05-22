@@ -1,0 +1,47 @@
+.cart-container {
+    margin: 2rem;
+}
+.cart-card {
+    border: 1px solid rgb(187, 187, 187);
+    border-radius: 1rem;
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+
+.cart-card h2 {
+    margin-bottom: 1rem;
+}
+
+.cart-card p {
+    margin-bottom: .5rem;
+}
+
+.cart-card button {
+    border: none;
+    background-color: rgb(52, 21, 88);
+    color: white;
+    border-radius: 1rem;
+    padding: .5rem 1rem;
+    width: 6rem;
+    height: 3rem;
+    margin-top: 1rem;
+    margin-right: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.cart-card button:hover {
+    background-color: rgb(100, 38, 136);
+}
+
+.cart-empty {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.cart-total {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+    font-weight: bold;
+}

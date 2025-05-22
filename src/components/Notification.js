@@ -1,6 +1,13 @@
 import './Notification.css'
 
 export const Notification = (type, message) => {
+      const existingNotification = document.querySelector('.notification-container:not([removing])');
+    
+    if (existingNotification) {
+        // Si ya existe una notificación, no crear una nueva
+        return;
+    }
+    
     const notificationContainer = document.createElement('div')
     notificationContainer.classList.add('notification-container')
 

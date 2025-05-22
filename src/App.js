@@ -1,3 +1,4 @@
+import { Footer } from './components/Footer';
 import { Navbar } from './components/Navbar';
 import { Home } from './pages/Home';
 import './style.css';
@@ -14,8 +15,10 @@ export const renderSite = (page, element = document.querySelector('#app')) => {
 	const mainContent = document.createElement('div');
 	mainContent.classList.add('main-content');
 	mainContent.append(page);
-
 	element.append(mainContent);
+
+	element.append(Footer())
+
 	return element;
 };
 

@@ -22,19 +22,21 @@ export const Home = () => {
 
 	heroLeft.append(divImgHero);
 
-	const h2Title = document.createElement('h2');
+	const h2Title = document.createElement('h1');
 	h2Title.classList.add('hero-title');
 	h2Title.textContent = heroContent.title;
+
 	const pSubtitle = document.createElement('p');
 	pSubtitle.classList.add('hero-subtitle');
 	pSubtitle.textContent = heroContent.subtitle;
+
 	const callToAction = document.createElement('a');
-	callToAction.classList.add('hero-button');
-	callToAction.innerText = heroContent.button;
-	callToAction.href = '/store';
+	callToAction.classList.add('primary-button');
+	callToAction.href = '/tienda';
+	callToAction.textContent = heroContent.button;
 	callToAction.addEventListener('click', (e) => {
 	 	e.preventDefault();
-		router('/store');
+		router('/tienda');
 	});
 
 	heroRight.append(h2Title, pSubtitle, callToAction);

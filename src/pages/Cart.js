@@ -1,67 +1,110 @@
 import { productInstances } from '../mappers/product-mapper';
+import { router } from '../router'
+import './Cart.css'
 
 export const Cart = () => {
-	const renderCart = () => {
-		const productsInCart = productInstances.filter((p) => p.getAmmount > 0);
 
-		const cartContainer = document.createElement('div');
-		cartContainer.classList.add('cart-container');
-		const h2Cart = document.createElement('h2');
-		h2Cart.textContent = 'Carrito de compras';
+    let cartContainer = null;
+    
+    const cleanupObservers = () => {
+        for ( const product of productInstances ) {
+            product.removeObserver(renderCart);
+        };
+    };
 
-		if (productsInCart.length === 0) {
-			const emptyParagraph = document.createElement('p');
-			emptyParagraph.textContent = 'El carrito está vacío.';
+    const renderCart = () => {
+        const productsInCart = productInstances.filter(p => p.getAmmount > 0);
+        const totalItems = productsInCart.reduce((sum, p) => sum + p.getAmmount, 0);
 
-			cartContainer.append(h2Cart, emptyParagraph);
-			return cartContainer;
-		}
+        const navCount = document.querySelector('a[href="/carrito"]');
+        if (navCount) {
+            navCount.textContent = `Carrito (${totalItems})`;
+        }
 
-		for (const product of productsInCart) {
-			const productCard = document.createElement('div');
+        const newContainer = document.createElement('div');
+        newContainer.classList.add('cart-container');
+        
+        const h2Cart = document.createElement('h1');
+        h2Cart.classList.add('cart-title')
+        h2Cart.textContent = 'Carrito de compras';
 
-			const productTitle = document.createElement('h3');
-			productTitle.textContent = product.getName;
-			const productPrice = document.createElement('p');
-			productPrice.textContent = product.getPrice;
-			const productAmmount = document.createElement('p');
-			productAmmount.textContent = product.getAmmount;
+        const total = document.createElement('p')
+        total.classList.add('cart-total')
+        let totalAllAmmount = 0
+        for (const productAmmount of productsInCart) {
+            totalAllAmmount += productAmmount.getAmmount * productAmmount.getPrice
+        }
+        total.textContent = `Total: $${ totalAllAmmount.toFixed(2) }`
 
-			const cartProductActions = document.createElement('div');
-			cartProductActions.classList.add('cart-product-actions');
+        newContainer.append(h2Cart, total);
 
-			const addButton = document.createElement('button');
-			addButton.classList.add('add-button');
-			addButton.textContent = 'Añadir';
-			addButton.addEventListener('click', () => {
-				product.addUnit();
-			});
+        if (productsInCart.length === 0) {
+            total.remove()
 
-			const substractButton = document.createElement('button');
-			substractButton.classList.add('substract-button');
-			substractButton.textContent = 'Quitar';
-			substractButton.addEventListener('click', (e) => {
-				e.preventDefault();
-				product.substractUnit();
-			});
+            const emptyParagraph = document.createElement('p');
+            emptyParagraph.classList.add('cart-empty')
+            emptyParagraph.textContent = 'El carrito está vacío.';
 
-			cartProductActions.append(addButton, substractButton);
+            const backButton = document.createElement('a')
+            backButton.href = '/tienda'
+            backButton.addEventListener('click', (e) => {
+                e.preventDefault()
+                router('/tienda')
+            })
+            backButton.classList.add('primary-button')
+            backButton.innerText = "Ver tienda"
 
-			productCard.append(
-				productTitle,
-				productPrice,
-				productAmmount,
-				cartProductActions,
-			);
-			cartContainer.append(h2Cart, productCard);
-		}
+            newContainer.append(emptyParagraph, backButton);
+        } else {
+            for ( const product of productsInCart ) {
+                const productCard = document.createElement('div');
+                productCard.classList.add('cart-card')
+                
+                const productTitle = document.createElement('h2');
+                productTitle.textContent = product.getName;
+                
+                const productPrice = document.createElement('p');
+                productPrice.textContent = `Precio: $${product.getPrice}`;
+                
+                const productAmmount = document.createElement('p');
+                productAmmount.textContent = product.getAmmount === 1 ? `Cantidad: ${product.getAmmount} unidad` : `Cantidad: ${product.getAmmount} unidades`;
+                
+                const subTotal = document.createElement('p');
+                subTotal.textContent = `Subtotal: $${(product.getAmmount * product.getPrice).toFixed(2)}`
+                subTotal.style.fontWeight = 700
 
-		return cartContainer;
-	};
+                const actions = document.createElement('div');
+                actions.classList.add('cart-product-actions');
+                
+                const addButton = document.createElement('button');
+                addButton.textContent = 'Añadir';
+                addButton.addEventListener('click', () => product.addUnit());
+                
+                const substractButton = document.createElement('button');
+                substractButton.textContent = 'Quitar';
+                substractButton.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    product.substractUnit();
+                });
+                
+                actions.append(addButton, substractButton);
+                productCard.append(productTitle, productPrice, productAmmount, subTotal, actions);
+                newContainer.appendChild(productCard);
+            };
+        }
 
-	for (const product of productInstances) {
-		product.addObserver(renderCart);
-	}
+        if (cartContainer && cartContainer.parentNode) {
+            cartContainer.parentNode.replaceChild(newContainer, cartContainer);
+        }
+        
+        cartContainer = newContainer;
+        return cartContainer;
+    };
 
-	return renderCart();
+    cleanupObservers();
+    productInstances.forEach(product => {
+        product.addObserver(renderCart);
+    });
+
+    return renderCart();
 };
