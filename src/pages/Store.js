@@ -4,6 +4,7 @@ import { Cart } from './Cart';
 import './Store.css';
 
 export const Store = () => {
+
 	const storeContainer = document.createElement('div');
 	storeContainer.classList.add('store-container');
 
