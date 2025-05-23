@@ -3,6 +3,7 @@ import { Home } from './pages/Home';
 import { Store } from './pages/Store';
 import { Cart } from './pages/Cart';
 import { NoPage } from './pages/NoPage';
+import { Admin } from './pages/Admin';
 
 export const router = (route) => {
 	switch (route) {
@@ -14,6 +15,9 @@ export const router = (route) => {
 			break;
 		case '/carrito':
 			renderPage(Cart());
+			break;
+		case '/admin':
+			renderPage(Admin());
 			break;
 		default:
 			renderPage(NoPage());
@@ -36,6 +40,10 @@ export const paths = [
 	},
 	{
 		route: '/carrito',
-		name: 'Carrito'
-	}
+		name: 'Carrito',
+	},
+	{
+		route: '/admin',
+		name: 'Administrar',
+	},
 ];

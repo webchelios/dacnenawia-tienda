@@ -63,7 +63,7 @@ export class Product {
 	}
 
 	removeObserver(callback) {
-		this.observers = this.observers.filter(clbk => clbk !== callback);
+		this.observers = this.observers.filter((clbk) => clbk !== callback);
 	}
 
 	notifyObservers() {
@@ -80,6 +80,11 @@ export class Product {
 	substractUnit() {
 		if (this.ammount === 0) return;
 		this.ammount--;
+		this.notifyObservers();
+	}
+
+	resetUnit() {
+		this.ammount = 0;
 		this.notifyObservers();
 	}
 }

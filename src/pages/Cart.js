@@ -81,17 +81,24 @@ export const Cart = () => {
 				actions.classList.add('cart-product-actions');
 
 				const addButton = document.createElement('button');
-				addButton.textContent = 'Añadir';
+				addButton.textContent = '+1';
 				addButton.addEventListener('click', () => product.addUnit());
 
 				const substractButton = document.createElement('button');
-				substractButton.textContent = 'Quitar';
+				substractButton.textContent = '-1';
 				substractButton.addEventListener('click', (e) => {
 					e.preventDefault();
 					product.substractUnit();
 				});
 
-				actions.append(addButton, substractButton);
+				const deleteButton = document.createElement('button');
+				deleteButton.textContent = 'Eliminar';
+				deleteButton.addEventListener('click', (e) => {
+					e.preventDefault();
+					product.resetUnit();
+				});
+
+				actions.append(addButton, substractButton, deleteButton);
 				productCard.append(
 					productTitle,
 					productPrice,
