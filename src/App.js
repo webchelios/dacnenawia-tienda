@@ -6,18 +6,22 @@ import './style.css';
 export const renderSite = (page, element = document.querySelector('#app')) => {
 	element.innerHTML = '';
 
+	const productmodal = document.createElement('div');
+	productmodal.id = 'product-modal';
+	element.append(productmodal);
+
 	element.append(Navbar());
 
-	const notification = document.createElement('div')
-	notification.id = 'notification'
-	element.append(notification)
+	const notification = document.createElement('div');
+	notification.id = 'notification';
+	element.append(notification);
 
 	const mainContent = document.createElement('div');
 	mainContent.classList.add('main-content');
 	mainContent.append(page);
 	element.append(mainContent);
 
-	element.append(Footer())
+	element.append(Footer());
 
 	return element;
 };

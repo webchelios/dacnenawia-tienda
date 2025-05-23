@@ -1,27 +1,32 @@
 import { Notification } from '../components/Notification';
-import { productInstances } from '../mappers/product-mapper';
+import { ProductModal } from '../components/ProductModal';
+import { getProducts } from '../store/productInstances';
 import { Cart } from './Cart';
 import './Store.css';
 
 export const Store = () => {
-
 	const storeContainer = document.createElement('div');
 	storeContainer.classList.add('store-container');
 
 	const titlesContainer = document.createElement('div');
 	titlesContainer.classList.add('store-titles');
+
 	const h2Store = document.createElement('h1');
 	h2Store.classList.add('store-h2');
 	h2Store.textContent = 'Catálogo completo';
+
 	const pStore = document.createElement('p');
 	pStore.classList.add('store-p');
 	pStore.textContent = 'Descubrí todos los productos';
+
 	titlesContainer.append(h2Store, pStore);
 
 	const productsContainer = document.createElement('div');
 	productsContainer.classList.add('store-products');
 
-	for (const product of productInstances) {
+	const products = getProducts();
+
+	for (const product of products) {
 		const container = document.createElement('div');
 		container.classList.add('store-product-card');
 		const imageUrl = new URL(
@@ -41,20 +46,26 @@ export const Store = () => {
 		const storeProductsActions = document.createElement('div');
 		storeProductsActions.classList.add('store-products-actions');
 
-		const substractButton = document.createElement('button');
-		substractButton.classList.add('buy-button');
-		substractButton.textContent = 'Comprar';
+		const detailButton = document.createElement('button');
+		detailButton.classList.add('buy-button');
+		detailButton.textContent = 'Detalles';
+		detailButton.addEventListener('click', () => {
+			document.querySelector('#product-modal').append(ProductModal(product));
+		});
 
 		const addButton = document.createElement('button');
 		addButton.classList.add('add-button');
 		addButton.textContent = 'Añadir al carrito';
 		addButton.addEventListener('click', () => {
 			product.addUnit();
-			Notification('success', `¡${ product.name} agregado al carrito con éxito!`)
+			Notification(
+				'success',
+				`¡${product.name} agregado al carrito con éxito!`,
+			);
 			Cart(document.querySelector('#cart'));
 		});
 
-		storeProductsActions.append(addButton, substractButton);
+		storeProductsActions.append(addButton, detailButton);
 		container.append(storeProductsActions);
 		productsContainer.append(container);
 	}
