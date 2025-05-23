@@ -18,7 +18,8 @@
 	margin: 1rem;
 	position: absolute;
 	top: 10rem;
-	min-width: 10rem;
+	min-width: 20rem;
+	max-width: 50rem;
 }
 
 .modal-card p {

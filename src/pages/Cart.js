@@ -1,3 +1,4 @@
+import { getItem, removeItem, setItem } from '../localstorage/localstorage';
 import { router } from '../router';
 import { getProducts } from '../store/productInstances';
 import './Cart.css';
@@ -14,7 +15,15 @@ export const Cart = () => {
 	};
 
 	const renderCart = () => {
-		const productsInCart = products.filter((p) => p.getAmmount > 0);
+		const storedProducts = getItem('products') || [];
+		let productsInCart = products.filter((p) => p.getAmmount > 0);
+
+		if (productsInCart.length === 0 && storedProducts.length > 0) {
+			productsInCart = storedProducts.filter((p) => p.getAmmount > 0);
+
+			// biome-ignore lint/complexity/noForEach: <explanation>
+			productsInCart.forEach((p) => p.addObserver(renderCart));
+		}
 
 		const totalItems = productsInCart.reduce((sum, p) => sum + p.getAmmount, 0);
 		const navCount = document.querySelector('a[href="/carrito"]');
@@ -82,13 +91,19 @@ export const Cart = () => {
 
 				const addButton = document.createElement('button');
 				addButton.textContent = '+1';
-				addButton.addEventListener('click', () => product.addUnit());
+				addButton.addEventListener('click', () => {
+					product.addUnit();
+					setItem('products', product, product.getAmmount);
+					renderCart();
+				});
 
 				const substractButton = document.createElement('button');
 				substractButton.textContent = '-1';
 				substractButton.addEventListener('click', (e) => {
 					e.preventDefault();
 					product.substractUnit();
+					setItem('products', product, product.getAmmount);
+					renderCart();
 				});
 
 				const deleteButton = document.createElement('button');
@@ -96,6 +111,8 @@ export const Cart = () => {
 				deleteButton.addEventListener('click', (e) => {
 					e.preventDefault();
 					product.resetUnit();
+					removeItem('products');
+					renderCart();
 				});
 
 				actions.append(addButton, substractButton, deleteButton);

@@ -13,10 +13,10 @@ export const ProductModal = (product) => {
 	const cardContent = document.createElement('div');
 	cardContent.innerHTML = `
             <div class="producto-${product.getId}">
-                <h3>${product.getName}</h3>
-                <p>${product.getCategory}</p>
-                <p style="font-weight: 700;">${product.getDescription}</p>
-                <p class="store-price">$${product.getPrice}</p>
+                <h3>Nombre: ${product.getName}</h3>
+                <p>Categoría: ${product.getCategory}</p>
+                <p style="font-weight: 700;">Descripción: ${product.getDescription}</p>
+                <p class="store-price">Precio: $${product.getPrice}</p>
         `;
 
 	const modalTitle = document.createElement('p');

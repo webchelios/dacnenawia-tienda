@@ -1,5 +1,6 @@
 import { Notification } from '../components/Notification';
 import { ProductModal } from '../components/ProductModal';
+import { setItem } from '../localstorage/localstorage';
 import { getProducts } from '../store/productInstances';
 import { Cart } from './Cart';
 import './Store.css';
@@ -48,7 +49,7 @@ export const Store = () => {
 
 		const detailButton = document.createElement('button');
 		detailButton.classList.add('buy-button');
-		detailButton.textContent = 'Detalles';
+		detailButton.textContent = 'Ver detalles';
 		detailButton.addEventListener('click', () => {
 			document.querySelector('#product-modal').append(ProductModal(product));
 		});
@@ -58,6 +59,7 @@ export const Store = () => {
 		addButton.textContent = 'Añadir al carrito';
 		addButton.addEventListener('click', () => {
 			product.addUnit();
+			setItem('products', product, product.getAmmount);
 			Notification(
 				'success',
 				`¡${product.name} agregado al carrito con éxito!`,

@@ -8,11 +8,11 @@
 }
 
 html {
-    overflow-y: scroll; 
+	overflow-y: scroll;
 }
 
 body {
-    overflow-x: hidden; 
+	overflow-x: hidden;
 }
 
 #app {
@@ -28,7 +28,8 @@ h4,
 p,
 a,
 footer,
-button {
+button,
+label {
 	font-family: "Noto Sans", sans-serif;
 }
 

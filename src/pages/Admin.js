@@ -1,48 +1,97 @@
+import './Admin.css';
+
 export const Admin = () => {
 	const adminContainer = document.createElement('div');
 	adminContainer.classList.add('admin-container');
 
 	const form = document.createElement('form');
+	form.classList.add('admin-form');
+
+	const nameLabel = document.createElement('label');
+	nameLabel.htmlFor = 'name';
+	nameLabel.innerText = 'Nombre del producto';
 
 	const name = document.createElement('input');
-	name.placeholder = 'Nombre';
 	name.name = 'name';
+	name.id = 'name';
+	name.required = true;
+
+	const categoryLabel = document.createElement('label');
+	categoryLabel.htmlFor = 'category';
+	categoryLabel.innerText = 'Categoría';
 
 	const category = document.createElement('input');
-	category.placeholder = 'Categoría';
 	category.name = 'category';
+	category.id = 'category';
+	category.required = true;
+
+	const priceLabel = document.createElement('label');
+	priceLabel.htmlFor = 'price';
+	priceLabel.innerText = 'Precio';
 
 	const price = document.createElement('input');
-	price.placeholder = 'Precio';
 	price.name = 'price';
+	price.type = 'number';
+	price.id = 'price';
+	price.required = true;
 
-	const discount = document.createElement('input');
-	discount.placeholder = 'Descuento';
-	discount.name = 'discount';
+	const descriptionLabel = document.createElement('label');
+	descriptionLabel.htmlFor = 'description';
+	descriptionLabel.innerText = 'Descripción';
 
 	const description = document.createElement('input');
-	description.placeholder = 'Descripción';
+	description.placeholder = 'Descripción detallada del producto';
 	description.name = 'description';
+	description.id = 'description';
+	description.required = true;
+
+	const imagesLabel = document.createElement('label');
+	imagesLabel.htmlFor = 'images';
+	imagesLabel.innerText = 'Imagen';
 
 	const images = document.createElement('input');
 	images.placeholder = 'URL de imagen';
 	images.name = 'images';
+	images.id = 'images';
+	images.type = 'url';
+	images.required = true;
+
+	const stockLabel = document.createElement('label');
+	stockLabel.htmlFor = 'stock';
+	stockLabel.innerText = 'Stock';
 
 	const stock = document.createElement('input');
-	stock.placeholder = 'Stock';
 	stock.name = 'stock';
+	stock.id = 'stock';
+	stock.required = true;
+
+	const discountLabel = document.createElement('label');
+	discountLabel.htmlFor = 'discount';
+	discountLabel.innerText = 'Descuento';
+
+	const discount = document.createElement('input');
+	discount.id = 'discount';
+	discount.name = 'discount';
+	discount.required = true;
 
 	const submit = document.createElement('button');
 	submit.type = 'submit';
 	submit.innerText = 'Crear';
 
 	form.append(
+		nameLabel,
 		name,
+		categoryLabel,
 		category,
+		priceLabel,
 		price,
-		discount,
+		descriptionLabel,
 		description,
+		imagesLabel,
 		images,
+		discountLabel,
+		discount,
+		stockLabel,
 		stock,
 		submit,
 	);

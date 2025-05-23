@@ -7,9 +7,19 @@ export class Product {
 	description;
 	images;
 	stock;
-	ammount = 0;
+	ammount;
 
-	constructor(id, name, category, price, discount, description, images, stock) {
+	constructor(
+		id,
+		name,
+		category,
+		price,
+		discount,
+		description,
+		images,
+		stock,
+		ammount = 0,
+	) {
 		this.id = id;
 		this.name = name;
 		this.category = category;
@@ -18,6 +28,7 @@ export class Product {
 		this.description = description;
 		this.images = images;
 		this.stock = stock;
+		this.ammount = ammount;
 
 		this.observers = [];
 	}
