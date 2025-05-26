@@ -1,3 +1,5 @@
+import { Notification } from '../components/Notification';
+import { router } from '../router';
 import './Admin.css';
 
 export const Admin = () => {
@@ -117,11 +119,17 @@ export const Admin = () => {
 			body: JSON.stringify(productData),
 		});
 
-		if (!response.ok) throw new Error('Failed to create product');
+		if (!response.ok) throw new Error('Error al crear el producto');
 
 		const result = await response.json();
-		alert('Product created successfully!');
 		form.reset();
+		Notification(
+			'success',
+			`Producto: ${productData.name} fue creado con éxito`,
+		);
+		setTimeout(() => {
+			window.location.href = '/tienda';
+		}, 1000);
 	});
 
 	adminContainer.append(form);

@@ -32,23 +32,3 @@ button,
 label {
 	font-family: "Noto Sans", sans-serif;
 }
-
-.primary-button {
-	border: none;
-	font-size: 1.1rem;
-	font-weight: 600;
-	padding: 0.8rem 2rem;
-	border-radius: 0.5rem;
-	cursor: pointer;
-	transition: all 0.3s ease;
-	display: inline-flex;
-	align-items: center;
-	gap: 0.5rem;
-	text-decoration: none;
-	border: 1px solid rgb(189, 189, 189);
-	color: black;
-}
-
-.primary-button:hover {
-	border-color: #191b1f;
-}

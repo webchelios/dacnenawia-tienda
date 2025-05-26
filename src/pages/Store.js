@@ -5,7 +5,7 @@ import { getProducts } from '../store/productInstances';
 import { Cart } from './Cart';
 import './Store.css';
 
-export const Store = () => {
+export const Store = async () => {
 	const storeContainer = document.createElement('div');
 	storeContainer.classList.add('store-container');
 
@@ -25,7 +25,19 @@ export const Store = () => {
 	const productsContainer = document.createElement('div');
 	productsContainer.classList.add('store-products');
 
-	const products = getProducts();
+	const products = await getProducts();
+
+	if (products.length === 0) {
+		const container = document.createElement('div');
+		container.classList.add('store-no-product');
+
+		const textAlert = document.createElement('p');
+		textAlert.innerText = 'No hay productos creados en nuestro catálogo.';
+
+		container.append(textAlert);
+		pStore.remove();
+		titlesContainer.append(container);
+	}
 
 	for (const product of products) {
 		const container = document.createElement('div');

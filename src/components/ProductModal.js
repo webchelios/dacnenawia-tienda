@@ -1,10 +1,13 @@
+import { renderPage } from '../App';
+import { Store } from '../pages/Store';
+import { router } from '../router';
 import './ProductModal.css';
 
 export const ProductModal = (product) => {
 	const modalContainer = document.createElement('div');
 	modalContainer.classList.add('modal-container');
 	modalContainer.addEventListener('click', () => {
-		closeModal();
+		//closeModal();
 	});
 
 	const modalCard = document.createElement('div');
@@ -32,7 +35,21 @@ export const ProductModal = (product) => {
 
 	modalTitle.append(modalExit);
 
-	modalCard.append(modalTitle, cardContent);
+	const eraseButton = document.createElement('button');
+	eraseButton.addEventListener('click', async (e) => {
+		const response = await fetch(
+			`http://localhost/web/dacnenawia-api/index.php/${product.getId}`,
+			{
+				method: 'DELETE',
+			},
+		);
+		closeModal();
+		location.reload();
+	});
+	eraseButton.innerText = 'Borrar';
+	eraseButton.classList.add('erase-button');
+
+	modalCard.append(modalTitle, cardContent, eraseButton);
 
 	const closeModal = () => {
 		modalContainer.remove();

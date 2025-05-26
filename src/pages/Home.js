@@ -35,7 +35,7 @@ export const Home = () => {
 	callToAction.href = '/tienda';
 	callToAction.textContent = heroContent.button;
 	callToAction.addEventListener('click', (e) => {
-	 	e.preventDefault();
+		e.preventDefault();
 		router('/tienda');
 	});
 

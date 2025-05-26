@@ -5,16 +5,16 @@ import { Cart } from './pages/Cart';
 import { NoPage } from './pages/NoPage';
 import { Admin } from './pages/Admin';
 
-export const router = (route) => {
+export const router = async (route) => {
 	switch (route) {
 		case '/':
 			renderPage(Home());
 			break;
 		case '/tienda':
-			renderPage(Store());
+			renderPage(await Store());
 			break;
 		case '/carrito':
-			renderPage(Cart());
+			renderPage(await Cart());
 			break;
 		case '/admin':
 			renderPage(Admin());

@@ -1,50 +1,153 @@
 .modal-container {
-	background-color: rgba(0, 0, 0, 0.836);
 	position: fixed;
+	top: 0;
+	left: 0;
 	width: 100%;
 	height: 100%;
+	background-color: rgba(0, 0, 0, 0.7);
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	z-index: 2000;
+	animation: fadeIn 0.3s ease;
+	backdrop-filter: blur(5px);
 }
 
 .modal-card {
 	background-color: white;
-	border-radius: 3rem;
-	padding-top: 1.5rem;
-	padding-left: 1.5rem;
-	padding-right: 1.5rem;
-	padding-bottom: 2.5rem;
-	margin: 1rem;
-	position: absolute;
-	top: 10rem;
-	min-width: 20rem;
-	max-width: 50rem;
-}
-
-.modal-card p {
-	margin-top: .5rem;
+	border-radius: 12px;
+	width: 90%;
+	max-width: 600px;
+	max-height: 90vh;
+	overflow-y: auto;
+	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+	position: relative;
+	animation: slideUp 0.4s ease;
+	padding: 2rem;
 }
 
 .modal-title {
-	height: 2.5rem;
+	font-size: 1.8rem;
+	font-weight: 700;
+	color: #2c3e50;
+	margin-bottom: 1.5rem;
 	display: flex;
-	justify-content: center;
+	justify-content: space-between;
 	align-items: center;
-	margin-bottom: 1rem;
+	border-bottom: 2px solid #f1f1f1;
+	padding-bottom: 1rem;
 }
 
 .modal-close {
+	background: none;
 	border: none;
-	width: 3rem;
-	height: 3rem;
-	background-color: rgb(185, 185, 185);
-	border-radius: 100%;
+	font-size: 1.5rem;
 	cursor: pointer;
-	position: absolute;
-	right: 1.5rem;
+	color: #7f8c8d;
+	transition: all 0.3s ease;
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 .modal-close:hover {
-	background-color: rgb(207, 207, 207);
+	background-color: #f1f1f1;
+	color: #e74c3c;
+}
+
+.modal-card h3 {
+	font-size: 1.4rem;
+	color: #2c3e50;
+	margin-bottom: 0.5rem;
+}
+
+.modal-card p {
+	color: #555;
+	line-height: 1.6;
+	margin-bottom: 1rem;
+}
+
+.store-price {
+	font-size: 1.5rem;
+	font-weight: 700;
+	color: #2c3e50;
+	margin: 1.5rem 0;
+}
+
+.erase-button {
+	width: 100%;
+	padding: 1rem;
+	background-color: #e74c3c;
+	color: white;
+	border: none;
+	border-radius: 6px;
+	font-size: 1rem;
+	font-weight: 600;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	margin-top: 1.5rem;
+}
+
+.erase-button:hover {
+	background-color: #c0392b;
+	transform: translateY(-2px);
+	box-shadow: 0 5px 15px rgba(231, 76, 60, 0.3);
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+@keyframes slideUp {
+	from {
+		transform: translateY(50px);
+		opacity: 0;
+	}
+	to {
+		transform: translateY(0);
+		opacity: 1;
+	}
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+	.modal-card {
+		width: 95%;
+		padding: 1.5rem;
+	}
+
+	.modal-title {
+		font-size: 1.5rem;
+	}
+
+	.modal-card h3 {
+		font-size: 1.2rem;
+	}
+
+	.store-price {
+		font-size: 1.3rem;
+	}
+}
+
+@media (max-width: 480px) {
+	.modal-card {
+		padding: 1rem;
+	}
+
+	.modal-title {
+		font-size: 1.3rem;
+	}
+
+	.erase-button {
+		padding: 0.8rem;
+	}
 }

@@ -31,13 +31,13 @@ export const firstRender = (app) => {
 };
 
 export const renderPage = (pageName) => {
-	let mainContent = document.querySelector('.main-content');
+	const mainContent = document.querySelector('.main-content');
 
-	if (!mainContent) {
-		mainContent = document.createElement('div');
-		mainContent.classList.add('main-content');
-		document.querySelector('#app').prepend(mainContent);
-	}
+	// if (!mainContent) {
+	// 	mainContent = document.createElement('div');
+	// 	mainContent.classList.add('main-content');
+	// 	document.querySelector('#app').prepend(mainContent);
+	// }
 	mainContent.innerHTML = '';
 	mainContent.append(pageName);
 };

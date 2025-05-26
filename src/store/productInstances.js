@@ -20,7 +20,10 @@ const notifyObservers = () => {
 	}
 };
 
-export const getProducts = () => {
+export const getProducts = async () => {
+	if (products.length === 0) {
+		await initializeProducts();
+	}
 	return [...products];
 };
 

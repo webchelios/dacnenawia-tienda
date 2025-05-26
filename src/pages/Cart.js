@@ -3,10 +3,10 @@ import { router } from '../router';
 import { getProducts } from '../store/productInstances';
 import './Cart.css';
 
-export const Cart = () => {
+export const Cart = async () => {
 	let cartContainer = null;
 
-	const products = getProducts();
+	const products = await getProducts();
 
 	const cleanupObservers = () => {
 		for (const product of products) {
