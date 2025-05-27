@@ -8,6 +8,8 @@
 	background: linear-gradient(135deg, #f9f9f9 0%, #ffffff 100%);
 	position: relative;
 	overflow: hidden;
+	max-width: 1920px;
+	margin: 0 auto;
 }
 
 .hero-container::before {
@@ -52,7 +54,7 @@
 	transform: perspective(1000px) rotateY(-5deg);
 	transition: transform 0.5s ease;
 	height: 600px;
-	max-width: 100rem;
+	max-width: 60rem;
 	margin-right: 1rem;
 }
 
@@ -153,7 +155,6 @@
 	}
 }
 
-/* Responsive Design */
 @media (max-width: 1024px) {
 	.hero-container {
 		flex-direction: column;
@@ -164,6 +165,7 @@
 	.hero-img {
 		height: 400px;
 		max-width: 100%;
+		margin: auto;
 	}
 
 	.hero-right {

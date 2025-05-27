@@ -11,7 +11,7 @@ const initializeProducts = async () => {
 export const subscribe = (callback) => {
 	observers.push(callback);
 	// biome-ignore lint/suspicious/noAssignInExpressions: <explanation>
-	return () => (observers = observers.filter((obs) => obs !== callback)); // Función para desuscribirse
+	return () => (observers = observers.filter((obs) => obs !== callback));
 };
 
 const notifyObservers = () => {

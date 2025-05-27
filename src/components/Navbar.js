@@ -22,6 +22,7 @@ export const Navbar = () => {
 		listItem.className = 'nav-item';
 
 		const link = document.createElement('a');
+
 		link.href = path.route;
 		link.textContent = path.name;
 		link.className = 'nav-link';
@@ -34,6 +35,27 @@ export const Navbar = () => {
 		listItem.appendChild(link);
 		navList.appendChild(listItem);
 	}
+
+	const installBtn = document.createElement('button');
+	installBtn.innerText = 'Instalar';
+	installBtn.classList.add('install-btn');
+
+	const installed = localStorage.getItem('installed');
+	if (installed) {
+		installBtn.classList.add('installed-btn');
+		alert('Insalado desde Navbar()');
+	}
+
+	navList.append(installBtn);
+
+	const menuToggle = document.createElement('div');
+	menuToggle.className = 'menu-toggle';
+	menuToggle.innerHTML = '=';
+	menuToggle.addEventListener('click', () => {
+		navList.classList.toggle('active');
+	});
+
+	nav.appendChild(menuToggle);
 
 	nav.append(logo, navList);
 	return nav;

@@ -25,7 +25,7 @@
 .admin-form input {
 	width: 100%;
 	padding: 0.8rem 1rem;
-	border: 1px solid #ddd;
+	border: 1px solid #9c9c9c;
 	border-radius: 6px;
 	font-size: 1rem;
 	transition: all 0.3s ease;
@@ -63,7 +63,6 @@
 	box-shadow: 0 5px 15px rgba(42, 65, 108, 0.3);
 }
 
-/* Estilos para los campos que deben ocupar todo el ancho */
 .admin-form label[for="description"],
 .admin-form label[for="images"],
 .admin-form #description,
@@ -71,7 +70,6 @@
 	grid-column: span 2;
 }
 
-/* Animaciones */
 @keyframes fadeIn {
 	from {
 		opacity: 0;
@@ -83,7 +81,6 @@
 	}
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
 	.admin-form {
 		grid-template-columns: 1fr;

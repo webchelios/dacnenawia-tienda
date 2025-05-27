@@ -41,7 +41,13 @@
 	text-align: center;
 	font-size: 1.2rem;
 	color: #7f8c8d;
-	margin: 2rem 0;
+	margin: 2rem;
+}
+
+.empty-button {
+	display: block;
+	width: 9.5rem;
+	margin: 0 auto;
 }
 
 .cart-card {
@@ -88,12 +94,12 @@
 }
 
 .cart-product-actions button:first-child {
-	background-color: #4a9165;
+	background-color: #4a6491;
 	color: white;
 }
 
 .cart-product-actions button:nth-child(2) {
-	background-color: #4a6491;
+	background-color: #c96616;
 	color: white;
 }
 
@@ -107,7 +113,6 @@
 	transform: translateY(-2px);
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
 	.cart-container {
 		padding: 1.5rem;

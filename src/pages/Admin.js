@@ -42,7 +42,6 @@ export const Admin = () => {
 	descriptionLabel.innerText = 'Descripción';
 
 	const description = document.createElement('input');
-	description.placeholder = 'Descripción detallada del producto';
 	description.name = 'description';
 	description.id = 'description';
 	description.required = true;
@@ -52,10 +51,8 @@ export const Admin = () => {
 	imagesLabel.innerText = 'Imagen';
 
 	const images = document.createElement('input');
-	images.placeholder = 'URL de imagen';
 	images.name = 'images';
 	images.id = 'images';
-	images.type = 'url';
 	images.required = true;
 
 	const stockLabel = document.createElement('label');

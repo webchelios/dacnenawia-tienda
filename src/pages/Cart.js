@@ -61,7 +61,7 @@ export const Cart = async () => {
 				e.preventDefault();
 				router('/tienda');
 			});
-			backButton.classList.add('primary-button');
+			backButton.classList.add('primary-button', 'empty-button');
 			backButton.innerText = 'Ver tienda';
 
 			newContainer.append(emptyParagraph, backButton);
