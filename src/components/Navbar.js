@@ -1,4 +1,5 @@
 import { paths, router } from '../router';
+import { pwaStore } from '../store/pwaStore';
 import './Navbar.css';
 
 export const Navbar = () => {
@@ -37,13 +38,17 @@ export const Navbar = () => {
 	}
 
 	const installBtn = document.createElement('button');
-	installBtn.innerText = 'Instalar';
-	installBtn.classList.add('install-btn');
+	installBtn.className = 'install-btn';
+	installBtn.textContent = 'Instalar App';
 
-	const installed = localStorage.getItem('installed');
-	if (installed) {
+	// Configuración inicial del botón basado en el store
+	if (pwaStore.state.isInstalled) {
 		installBtn.classList.add('installed-btn');
-		alert('Insalado desde Navbar()');
+		installBtn.textContent = 'Ya instalado';
+		installBtn.disabled = true;
+	} else {
+		installBtn.style.display = pwaStore.state.canInstall ? 'block' : 'none';
+		installBtn.addEventListener('click', () => pwaStore.installApp());
 	}
 
 	navList.append(installBtn);
