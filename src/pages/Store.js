@@ -42,10 +42,6 @@ export const Store = async () => {
 	for (const product of products) {
 		const container = document.createElement('div');
 		container.classList.add('store-product-card');
-		// const imageUrl = new URL(
-		// 	`../assets/img/${product.getImages[0]}`,
-		// 	import.meta.url,
-		// ).href;
 		container.innerHTML = `
             <div class="producto-${product.getId}">
                 <h3>${product.getName}</h3>

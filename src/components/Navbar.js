@@ -40,16 +40,7 @@ export const Navbar = () => {
 	const installBtn = document.createElement('button');
 	installBtn.className = 'install-btn';
 	installBtn.textContent = 'Instalar App';
-
-	// Configuración inicial del botón basado en el store
-	if (pwaStore.state.isInstalled) {
-		installBtn.classList.add('installed-btn');
-		installBtn.textContent = 'Ya instalado';
-		installBtn.disabled = true;
-	} else {
-		installBtn.style.display = pwaStore.state.canInstall ? 'block' : 'none';
-		installBtn.addEventListener('click', () => pwaStore.installApp());
-	}
+	installBtn.addEventListener('click', pwaStore.installApp);
 
 	navList.append(installBtn);
 

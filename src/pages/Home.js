@@ -1,6 +1,5 @@
 import { heroContent } from '../constants/constants';
 import { router } from '../router';
-// import { router } from '../router';
 import './Home.css';
 
 export const Home = () => {

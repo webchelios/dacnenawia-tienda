@@ -1,66 +1,33 @@
-// src/store/pwaStore.js
-let deferredPrompt = null;
 const isInstalled = localStorage.getItem('installed') === 'true';
-
+let installEvent = null;
+const installBtn = document.querySelector('.install-btn');
 export const pwaStore = {
 	state: {
-		canInstall: false,
 		isInstalled: isInstalled,
 	},
 
 	init() {
-		window.addEventListener('beforeinstallprompt', (e) => {
-			e.preventDefault();
-			deferredPrompt = e;
-			this.state.canInstall = true;
-			console.log('PWA can be installed');
-			this.updateUI();
-		});
-
 		window.addEventListener('appinstalled', () => {
-			localStorage.setItem('installed', 'true');
-			this.state.isInstalled = true;
-			this.state.canInstall = false;
-			console.log('PWA was installed');
-			this.updateUI();
+			installBtn.style.display = 'none';
+			localStorage.setItem('installed', true);
 		});
 
-		// Verificar si ya está instalado al cargar
-		if (window.matchMedia('(display-mode: standalone)').matches) {
-			this.state.isInstalled = true;
-			localStorage.setItem('installed', 'true');
+		window.addEventListener('beforeinstallprompt', (event) => {
+			event.preventDefault();
+			installEvent = event;
+		});
+
+		if (navigator.serviceWorker) {
+			console.log('ServiceWorker listo para usar');
+			navigator.serviceWorker.register('serviceworker.js');
+		} else {
+			console.log('No se puede usar ServiceWorker');
 		}
 	},
-
-	async installApp() {
-		if (deferredPrompt) {
-			deferredPrompt.prompt();
-			const { outcome } = await deferredPrompt.userChoice;
-
-			if (outcome === 'accepted') {
-				this.state.isInstalled = true;
-				localStorage.setItem('installed', 'true');
-			}
-
-			deferredPrompt = null;
-			this.state.canInstall = false;
-			this.updateUI();
-		}
-	},
-
-	updateUI() {
-		const installBtn = document.querySelector('.install-btn');
-		if (installBtn) {
-			if (this.state.isInstalled) {
-				installBtn.classList.add('installed-btn');
-				installBtn.textContent = 'Ya instalado';
-				installBtn.disabled = true;
-			} else if (this.state.canInstall) {
-				installBtn.style.display = 'block';
-				installBtn.disabled = false;
-			} else {
-				installBtn.style.display = 'none';
-			}
+	installApp() {
+		console.log(installEvent);
+		if (installEvent) {
+			installEvent.prompt();
 		}
 	},
 };

@@ -1,6 +1,5 @@
 import { firstRender } from './App';
 import { router } from './router';
-import { pwaStore } from './store/pwaStore';
 
 const app = document.querySelector('#app');
 

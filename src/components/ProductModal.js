@@ -6,9 +6,6 @@ import './ProductModal.css';
 export const ProductModal = (product) => {
 	const modalContainer = document.createElement('div');
 	modalContainer.classList.add('modal-container');
-	modalContainer.addEventListener('click', () => {
-		//closeModal();
-	});
 
 	const modalCard = document.createElement('div');
 	modalCard.classList.add('modal-card');

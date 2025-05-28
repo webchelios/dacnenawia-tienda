@@ -32,12 +32,6 @@ export const firstRender = (app) => {
 
 export const renderPage = (pageName) => {
 	const mainContent = document.querySelector('.main-content');
-
-	// if (!mainContent) {
-	// 	mainContent = document.createElement('div');
-	// 	mainContent.classList.add('main-content');
-	// 	document.querySelector('#app').prepend(mainContent);
-	// }
 	mainContent.innerHTML = '';
 	mainContent.append(pageName);
 };
