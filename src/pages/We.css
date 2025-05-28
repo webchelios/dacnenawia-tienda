@@ -1,0 +1,10 @@
+.we-container {
+	max-width: 1920px;
+	margin: 2rem auto;
+	text-align: center;
+}
+
+.we-container p {
+	margin: 1rem auto;
+	width: 30rem;
+}

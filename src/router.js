@@ -4,6 +4,7 @@ import { Store } from './pages/Store';
 import { Cart } from './pages/Cart';
 import { NoPage } from './pages/NoPage';
 import { Admin } from './pages/Admin';
+import { We } from './pages/We';
 
 export const router = async (route) => {
 	switch (route) {
@@ -18,6 +19,9 @@ export const router = async (route) => {
 			break;
 		case '/admin':
 			renderPage(Admin());
+			break;
+		case '/nosotros':
+			renderPage(We());
 			break;
 		default:
 			renderPage(NoPage());
