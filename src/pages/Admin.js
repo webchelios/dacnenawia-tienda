@@ -1,5 +1,4 @@
 import { Notification } from '../components/Notification';
-import { router } from '../router';
 import './Admin.css';
 
 export const Admin = () => {
@@ -11,49 +10,47 @@ export const Admin = () => {
 
 	const nameLabel = document.createElement('label');
 	nameLabel.htmlFor = 'name';
-	nameLabel.innerText = 'Nombre del producto';
+	nameLabel.innerHTML =
+		'Nombre del producto <span class="required-label">*</span>';
 
 	const name = document.createElement('input');
 	name.name = 'name';
 	name.id = 'name';
-	name.required = true;
+	name.placeholder = 'Mínimo 3 caracteres';
 
 	const categoryLabel = document.createElement('label');
 	categoryLabel.htmlFor = 'category';
-	categoryLabel.innerText = 'Categoría';
+	categoryLabel.innerHTML = 'Categoría <span class="required-label">*</span>';
 
 	const category = document.createElement('input');
 	category.name = 'category';
 	category.id = 'category';
-	category.required = true;
 
 	const priceLabel = document.createElement('label');
 	priceLabel.htmlFor = 'price';
-	priceLabel.innerText = 'Precio';
+	priceLabel.innerHTML = 'Precio <span class="required-label">*</span>';
 
 	const price = document.createElement('input');
 	price.name = 'price';
 	price.type = 'number';
 	price.id = 'price';
-	price.required = true;
 
 	const descriptionLabel = document.createElement('label');
 	descriptionLabel.htmlFor = 'description';
-	descriptionLabel.innerText = 'Descripción';
+	descriptionLabel.innerHTML =
+		'Descripción <span class="required-label">*</span>';
 
 	const description = document.createElement('input');
 	description.name = 'description';
 	description.id = 'description';
-	description.required = true;
 
 	const imagesLabel = document.createElement('label');
 	imagesLabel.htmlFor = 'images';
-	imagesLabel.innerText = 'Imagen';
+	imagesLabel.innerHTML = 'Imagen <span class="required-label">*</span>';
 
 	const images = document.createElement('input');
 	images.name = 'images';
 	images.id = 'images';
-	images.required = true;
 
 	const stockLabel = document.createElement('label');
 	stockLabel.htmlFor = 'stock';
@@ -62,7 +59,6 @@ export const Admin = () => {
 	const stock = document.createElement('input');
 	stock.name = 'stock';
 	stock.id = 'stock';
-	stock.required = true;
 
 	const discountLabel = document.createElement('label');
 	discountLabel.htmlFor = 'discount';
@@ -71,7 +67,6 @@ export const Admin = () => {
 	const discount = document.createElement('input');
 	discount.id = 'discount';
 	discount.name = 'discount';
-	discount.required = true;
 
 	const submit = document.createElement('button');
 	submit.type = 'submit';
@@ -97,6 +92,42 @@ export const Admin = () => {
 
 	form.addEventListener('submit', async (e) => {
 		e.preventDefault();
+
+		const validateForm = () => {
+			let isValid = true;
+
+			if (name.value.trim().length < 3) {
+				Notification('error', 'El nombre debe tener al menos 3 caracteres');
+				isValid = false;
+			}
+
+			if (!category.value) {
+				Notification('error', 'No se introdujo categoría');
+				isValid = false;
+			}
+
+			if (Number(price.value) <= 0) {
+				Notification('error', 'El precio debe ser mayor que 0');
+				isValid = false;
+			}
+
+			if (!description.value) {
+				Notification('error', 'No se introdujo descripción');
+				isValid = false;
+			}
+
+			if (!images.value) {
+				Notification('error', 'No se introdujo imagen');
+				isValid = false;
+			}
+
+			return isValid;
+		};
+
+		if (!validateForm()) {
+			return;
+		}
+
 		const formData = new FormData(form);
 		const productData = {
 			name: formData.get('name'),
@@ -108,17 +139,26 @@ export const Admin = () => {
 			stock: formData.get('stock'),
 		};
 
-		const response = await fetch('http://localhost/web/dacnenawia-api/', {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json',
-			},
-			body: JSON.stringify(productData),
-		});
+		try {
+			const response = await fetch('http://localhost/web/dacnenawia-api/', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify(productData),
+			});
 
-		if (!response.ok) throw new Error('Error al crear el producto');
+			if (!response.ok) {
+				Notification('Error HTTP', response.statusText);
+				throw new Error('Error HTTP');
+			}
 
-		const result = await response.json();
+			const result = await response.json();
+		} catch (error) {
+			Notification('error', `${error}`);
+			throw new Error('Error al realizar la petición');
+		}
+
 		form.reset();
 		Notification(
 			'success',
